@@ -1,0 +1,34 @@
+steps:
+- id: pull
+  name: gcr.io/cloud-builders/docker
+  entrypoint: /bin/bash
+  args: [ -c, docker pull gcr.io/$PROJECT_ID/$REPO_NAME-$_SUBMODULE_PATH:latest || exit 0 ]
+- id: build
+  dir: api
+  name: gcr.io/cloud-builders/docker
+  entrypoint: make
+  args: [
+    $_SUBMODULE_PATH-build, DOCKER_BASE_NAME=gcr.io/$PROJECT_ID/$REPO_NAME, DOCKER_TAG=$COMMIT_SHA
+  ]
+- id: test
+  dir: api
+  name: gcr.io/cloud-builders/docker
+  entrypoint: make
+  args: [
+    $_SUBMODULE_PATH-test, DOCKER_BASE_NAME=gcr.io/$PROJECT_ID/$REPO_NAME, DOCKER_TAG=$COMMIT_SHA
+  ]
+- id: tag-latest
+  name: gcr.io/cloud-builders/docker
+  args: [
+    tag,
+    gcr.io/$PROJECT_ID/$REPO_NAME-$_SUBMODULE_PATH:$COMMIT_SHA,
+    gcr.io/$PROJECT_ID/$REPO_NAME-$_SUBMODULE_PATH:latest
+  ]
+substitutions:
+  _ENV: prod
+  _SUBMODULE_PATH: bidaf_elmo
+images: [
+  gcr.io/$PROJECT_ID/$REPO_NAME-$_SUBMODULE_PATH:$COMMIT_SHA,
+  gcr.io/$PROJECT_ID/$REPO_NAME-$_SUBMODULE_PATH:latest,
+]
+timeout: 900s

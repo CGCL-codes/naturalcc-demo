@@ -1,0 +1,4 @@
+{
+    "id": "semantic-role-labeling",
+    "pretrained_model_id": "structured-prediction-srl-bert"
+}

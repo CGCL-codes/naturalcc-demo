@@ -1,0 +1,5 @@
+{
+    "id": "naqanet",
+    "pretrained_model_id": "rc-naqanet",
+    "attackers": ["input_reduction"]
+}

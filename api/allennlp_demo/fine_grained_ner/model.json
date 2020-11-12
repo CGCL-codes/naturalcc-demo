@@ -1,0 +1,4 @@
+{
+    "id": "fine-grained-ner",
+    "pretrained_model_id": "tagging-fine-grained-crf-tagger"
+}

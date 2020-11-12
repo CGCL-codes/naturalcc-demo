@@ -1,0 +1,4 @@
+{
+    "id": "glove-sentiment-analysis",
+    "pretrained_model_id": "glove-sst"
+}

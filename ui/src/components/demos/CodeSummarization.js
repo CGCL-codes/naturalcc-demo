@@ -20,15 +20,36 @@ const description = (
     </span>
 )
 
+
+// TODO: NCC cli
+const bashCommand = (modelUrl) => {
+    return `echo '{"code": "def addition(a, b):\\n\\treturn a+b"}' | \\
+allennlp predict ${modelUrl} -`
+}
+
+// TODO: NCC predictor
+const pythonCommand = (modelUrl) => {
+    return `from allennlp.predictors.predictor import Predictor
+import allennlp_models.rc
+predictor = Predictor.from_path("${modelUrl}")
+predictor.predict(
+  passage="The Matrix is a 1999 science fiction action film written and directed by The Wachowskis, starring Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving, and Joe Pantoliano.",
+  question="Who stars in The Matrix?"
+)`
+}
+
 // tasks that have only 1 model, and models that do not define usage will use this as a default
 // undefined is also fine, but no usage will be displayed for this task/model
 const defaultUsage = undefined;
 
+// TODO: define model
 const buildUsage = (modelUrl, configPath) => {
+    // model file, *.pt
     const fullModelUrl = `https://storage.googleapis.com/allennlp-public-models/${modelUrl}`;
+    // model config, *.yml
     const fullConfigPath = `https://raw.githubusercontent.com/allenai/allennlp-models/v1.0.0/training_config/rc/${configPath}`;
     return {
-        installCommand: 'pip install ncc==1.0.0',
+        installCommand: 'pip install ncc==0.1.0',
         bashCommand: bashCommand(fullModelUrl),
         pythonCommand: pythonCommand(fullModelUrl),
         evaluationCommand: `allennlp evaluate \\

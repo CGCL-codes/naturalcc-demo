@@ -21,18 +21,48 @@ import questionIcon from './icons/question-14px.svg';
 import addIcon from './icons/add-14px.svg';
 
 // code summarization task
-// import CodeSummarization from './components/demos/CodeSummarization'
+import CodeSummarization from './components/demos/CodeSummarization'
+import CodeRetrieval from './components/demos/CodeRetrieval'
+import TypeInference from './components/demos/TypeInference'
+import CodePrediction from './components/demos/CodePrediction'
 
 // This is the order in which they will appear in the menu
 const modelGroups = [
-    // {
-    //     label: "Code Summarization",
-    //     iconSrc: questionIcon,
-    //     defaultOpen: true,
-    //     models: [
-    //         {model: "code-summarization", name: "Code Summarization", component: CodeSummarization},
-    //     ]
-    // },
+    // NCC examples
+    {
+        label: "Code Summarization",
+        iconSrc: questionIcon,
+        defaultOpen: true,
+        models: [
+            {model: "code-summarization", name: "Code Summarization", component: CodeSummarization},
+        ]
+    },
+    {
+        label: "Code Retrieval",
+        iconSrc: questionIcon,
+        defaultOpen: true,
+        models: [
+            {model: "code-retrieval", name: "Code Retrieval", component: CodeRetrieval},
+        ]
+    },
+    {
+        label: "Type Inference",
+        iconSrc: questionIcon,
+        defaultOpen: true,
+        models: [
+            {model: "type-inference", name: "Type Inference", component: TypeInference},
+        ]
+    },
+    {
+        label: "Code Prediction",
+        iconSrc: questionIcon,
+        defaultOpen: true,
+        models: [
+            {model: "code-prediction", name: "Code Prediction", component: CodePrediction},
+        ]
+    },
+
+    // AllenNLP examples
     {
         label: "Answer a question",
         iconSrc: questionIcon,

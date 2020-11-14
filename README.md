@@ -1,3 +1,32 @@
+###########################################################################
+### 1) before you start this repo.. plz, make sure your Node.js version >= 15
+### 2) install react and its libs.
+```bash
+cd ui
+npm install --save react react-dom
+npm install --save react-router-dom
+```
+
+### 3) debug or build web
+```bash
+# debug
+npm start
+# buiild
+npm build
+``` 
+
+### 4) write webpage at ```ui/src/models.js```
+
+
+
+
+
+
+
+###########################################################################
+
+
+
 <div align="center">
     <img src="https://raw.githubusercontent.com/allenai/allennlp/master/docs/img/allennlp-logo-dark.png" width="400"/>
     <hr/>

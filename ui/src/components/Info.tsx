@@ -29,10 +29,10 @@ const Info = () => {
     <Layout bgcolor="white">
       <Header>
         <HeaderColumnsWithSpace gridTemplateColumns="auto auto 1fr">
-          <a href="http://www.allennlp.org/" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/xcodemind" target="_blank" rel="noopener noreferrer">
             <Logo width="147px"
               height="26px"
-              alt="AllenNLP"
+              alt="NaturalCC"
             />
           </a>
         </HeaderColumnsWithSpace>
@@ -52,7 +52,8 @@ const Info = () => {
 };
 
 const Logo = styled.img.attrs({
-  src: allenNLPLogo
+  // src: allenNLPLogo
+  src: "https://freesvg.org/img/save-the-pandas.png"
 })``;
 
 const HeaderColumnsWithSpace = styled(Header.HeaderColumns)`

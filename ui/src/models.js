@@ -20,8 +20,19 @@ import passageIcon from './icons/passage-14px.svg';
 import questionIcon from './icons/question-14px.svg';
 import addIcon from './icons/add-14px.svg';
 
+// code summarization task
+// import CodeSummarization from './components/demos/CodeSummarization'
+
 // This is the order in which they will appear in the menu
 const modelGroups = [
+    // {
+    //     label: "Code Summarization",
+    //     iconSrc: questionIcon,
+    //     defaultOpen: true,
+    //     models: [
+    //         {model: "code-summarization", name: "Code Summarization", component: CodeSummarization},
+    //     ]
+    // },
     {
         label: "Answer a question",
         iconSrc: questionIcon,
@@ -88,11 +99,11 @@ modelGroups.forEach((mg) => mg.models.forEach(({model, component}) => modelCompo
 
 let modelRedirects = {}
 modelGroups.forEach((mg) => mg.models.forEach(
-  ({model, redirects}) => {
-    if (redirects) {
-      redirects.forEach((redirect) => modelRedirects[redirect] = model)
+    ({model, redirects}) => {
+        if (redirects) {
+            redirects.forEach((redirect) => modelRedirects[redirect] = model)
+        }
     }
-  }
 ));
 
-export { modelComponents, modelGroups, modelRedirects }
+export {modelComponents, modelGroups, modelRedirects}

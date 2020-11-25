@@ -1,4 +1,0 @@
-{
-    "id": "named-entity-recognition",
-    "pretrained_model_id": "tagging-elmo-crf-tagger"
-}

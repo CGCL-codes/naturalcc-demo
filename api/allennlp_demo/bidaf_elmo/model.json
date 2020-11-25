@@ -1,5 +1,0 @@
-{
-    "id": "bidaf-elmo",
-    "pretrained_model_id": "rc-bidaf-elmo",
-    "attackers": ["input_reduction"]
-}

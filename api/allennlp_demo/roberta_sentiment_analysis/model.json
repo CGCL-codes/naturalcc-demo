@@ -1,5 +1,0 @@
-{
-    "id": "roberta-sentiment-analysis",
-    "pretrained_model_id": "roberta-sst",
-    "attackers": ["input_reduction"]
-}

@@ -1,5 +1,0 @@
-{
-    "id": "roberta-snli",
-    "pretrained_model_id": "pair-classification-roberta-snli",
-    "attackers": ["input_reduction"]
-}

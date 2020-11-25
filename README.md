@@ -1,99 +1,70 @@
-###########################################################################
-### 1) before you start this repo.. plz, make sure your Node.js version >= 15
-### 2) install react and its libs.
-```bash
-cd ui
-npm install --save react react-dom
-npm install --save react-router-dom
-```
+# Getting Started with Create React App
 
-### 3) debug or build web
-```bash
-# debug
-npm start
-# buiild
-npm build
-``` 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### 4) write webpage at ```ui/src/models.js```
+## Available Scripts
 
+In the project directory, you can run:
 
+### `npm start`
 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
+### `npm test`
 
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-###########################################################################
+### `npm run build`
 
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-<div align="center">
-    <img src="https://raw.githubusercontent.com/allenai/allennlp/master/docs/img/allennlp-logo-dark.png" width="400"/>
-    <hr/>
-</div>
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-This repository contains the code for the [AllenNLP demo](https://demo.allennlp.org).
+### `npm run eject`
 
-We're actively refactoring some bits and pieces of the codebase, you can expect
-better documentation to land in the near future.
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-For more information see the [AllenNLP project](https://github.com/allenai/allennlp).
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Prerequisites
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You'll need [Docker](https://www.docker.com/) installed on your local machine.
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Running a Local Environment
+## Learn More
 
-The AllenNLP demo at a high level is composed of two components:
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-1. A JavaScript application for rendering the user-interface. The code for this can be found
-   in `ui/`.
-2. A series of Python applications that each provide a small HTTP API endpoint for doing interesting
-   things with a single model. The code for this can be found in `api/`.
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-There's three ways to run things locally:
+### Code Splitting
 
-1. If you're working on a single model endpoint consult the
-   [README in the api directory](./api/README.md) for more specific instructions.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-2. If you're only working on the user-interface, you can start things up by running:
+### Analyzing the Bundle Size
 
-    ```
-    docker-compose -f docker-compose.ui-only.yaml up --build
-    ```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-   Once that's complete you'll be able to access your local version by opening
-   [http://localhost:8080](http://localhost:8080) in a browser. Changes to the code should
-   be automatically applied.
+### Making a Progressive Web App
 
-3. If you're only working on the Permalinks service, you can start things up by running:
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-    ```
-    docker-compose -f docker-compose.permalinks.yaml up --build
-    ```
+### Advanced Configuration
 
-   Once that's complete, follow the instructions in the [Permalinks
-   README](api/allennl_demo/permalinks/).
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-4. If you'd like to run an end to end environment that includes the user-interface and a model
-   endpoint, you can do so by running:
+### Deployment
 
-    ```bash
-    MODEL=bidaf_elmo docker-compose up --build
-    ```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-   The `MODEL` environment variable specifies which model in `api/` to run locally. The name should
-   match the name of the directory in `api/allenlp_demo`. If the model has a custom `Dockerfile`,
-   set the `MODEL_DOCKERFILE` environment variable to the path to that file:
+### `npm run build` fails to minify
 
-   ```bash
-   MODEL=masked_lm MODEL_DOCKERFILE=allennlp_demo/masked_lm/Dockerfile docker-compose up --build
-   ```
-
-   Once everything's started open [http://localhost:8080](http://localhost:8080) in the
-   browser of your choice.
-
-   Code changes will be automatically applied, while changes to backend or frontend dependencies
-   require rerunning `docker-compose`.
-
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

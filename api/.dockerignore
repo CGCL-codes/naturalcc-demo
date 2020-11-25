@@ -1,6 +1,0 @@
-**/.skiff
-**/__pycache__
-**/*.pyc
-**/*.md
-**/.mypy_cache
-.git

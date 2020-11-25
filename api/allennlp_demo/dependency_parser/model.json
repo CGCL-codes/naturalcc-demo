@@ -1,4 +1,0 @@
-{
-    "id": "dependency-parser",
-    "pretrained_model_id": "structured-prediction-biaffine-parser"
-}

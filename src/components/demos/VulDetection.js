@@ -130,20 +130,8 @@ const Token = styled.span`
   font-weight: 600;
 `
 
-const DEFAULT = "AllenNLP is";
+const DEFAULT = "Test";
 
-function addToUrl(output, choice) {
-  if ('history' in window) {
-    window.history.pushState(null, null, '?text=' + encodeURIComponent(output + (choice || '')))
-  }
-}
-
-function loadFromUrl() {
-  const params =
-      document.location.search.substr(1).split('&').map(p => p.split('='));
-  const text = params.find(p => p[0] === 'text');
-  return Array.isArray(text) && text.length === 2 ?  decodeURIComponent(text.pop()) : null;
-}
 
 function trimRight(str) {
   return str.replace(/ +$/, '');
@@ -157,13 +145,6 @@ const description = (
   </span>
 )
 
-const probabilitiesNote = (
-  <span>
-    Note: The prediction percentages are normalized across these five sequences. The true probabilities are lower.
-  </span>
-)
-
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -171,7 +152,7 @@ class App extends React.Component {
     this.currentRequestId = 0;
 
     this.state = {
-      output: loadFromUrl() || DEFAULT,
+      output: DEFAULT,
       top_tokens: null,
       logits: null,
       probabilities: null,
@@ -182,128 +163,13 @@ class App extends React.Component {
       attackData: null
     }
 
-    this.choose = this.choose.bind(this)
-    this.debouncedChoose = _.debounce(this.choose, 1000)
-    this.setOutput = this.setOutput.bind(this)
+    // this.choose = this.choose.bind(this)
+    // this.debouncedChoose = _.debounce(this.choose, 1000)
+    // this.setOutput = this.setOutput.bind(this)
     // this.runOnEnter = this.runOnEnter.bind(this)
     // this.interpretModel = this.interpretModel.bind(this)
     // this.attackModel = this.attackModel.bind(this)
   }
-
-  setOutput(evt) {
-    const value = evt.target.value
-    if (value) { // TODO(michaels): I shouldn't need to do this
-      const trimmed = trimRight(value);
-
-      const loading = trimmed.length > 0;
-
-      this.setState({
-          output: value,
-          top_tokens: null,
-          logits: null,
-          probabilities: null,
-          interpretData: null,
-          attackData: null,
-          loading: loading
-      })
-
-      this.debouncedChoose()
-    }
-    else { // Update text input without request to backend server
-      this.setState({
-          output: value,
-          top_tokens: null,
-          logits: null,
-          probabilities: null,
-          interpretData: null,
-          attackData: null,
-          loading: false
-      })
-    }
-  }
-
-  createRequestId() {
-    const nextReqId = this.currentRequestId + 1;
-    this.currentRequestId = nextReqId;
-    return nextReqId;
-  }
-
-  componentDidMount() {
-    this.choose()
-    if ('history' in window) {
-      window.addEventListener('popstate', () => {
-        const fullText = loadFromUrl();
-        const doNotChangeUrl = fullText ? true : false;
-        const output = fullText || DEFAULT;
-        this.setState({
-          output,
-          loading: true,
-          top_tokens: null,
-          logits: null,
-          probabilities: null,
-          model: this.state.model
-        }, () => this.choose(undefined, doNotChangeUrl));
-      })
-    }
-  }
-
-  choose(choice = undefined, doNotChangeUrl) {
-    // strip trailing spaces
-    const textAreaText = this.state.output;
-    if (trimRight(textAreaText).length === 0) {
-      this.setState({ loading: false });
-      return;
-    }
-
-    this.setState({ loading: true, error: false })
-    // TODO(mattg): this doesn't actually send the newline token to the model in the right way.
-    // I'm not sure how to fix that.
-    const cleanedChoice = choice === undefined ? undefined : choice.replace(/↵/g, '\n');
-
-    const sentence = choice === undefined ? textAreaText : textAreaText + cleanedChoice
-    const payload = {
-      sentence: sentence
-    }
-
-    const currentReqId = this.createRequestId();
-
-    if ('history' in window && !doNotChangeUrl) {
-      addToUrl(this.state.output, cleanedChoice);
-    }
-
-    fetch("/api/predict", {
-      method: "POST",
-      headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-      if (this.currentRequestId === currentReqId) {
-        // If the user entered text by typing don't overwrite it, as that feels
-        // weird. If they clicked it overwrite it
-        const output = choice === undefined ? this.state.output : data.output
-        this.setState({...data, output: sentence, loading: false})
-        this.requestData = output;
-      }
-    })
-    .catch(err => {
-      console.error('Error trying to communicate with the API:', err);
-      this.setState({ error: true, loading: false });
-    });
-  }
-
-  // Temporarily (?) disabled
-  // runOnEnter(e) {
-  //   if (e.key === 'Enter') {
-  //       e.preventDefault()
-  //       e.stopPropagation()
-  //       this.choose()
-  //   }
-  // }
 
   render() {
 
@@ -334,71 +200,6 @@ class App extends React.Component {
 }
 
 
-const formatProbability = (probs, idx) => {
-  // normalize the displayed probabilities
-  var sum = probs.reduce(function(a, b){
-    return a + b;
-  }, 0);
-  console.log('probs: ', probs);
-  console.log("probs[idx]: ", probs[idx]);
-  console.log("sum: ", sum);
-  var prob = probs[idx] / sum
-  console.log('prob: ', prob);
-  prob = prob * 100
-  return `${prob.toFixed(1)}%`
-}
-
-const Choices = ({output, index, logits, top_tokens, choose, probabilities}) => {
-  console.log("output: ", output);
-  console.log("top_tokens: ", top_tokens);
-  console.log("probabilities: ", probabilities);
-  if (!top_tokens) { return null }
-  if (top_tokens.length <= index) { return null }
-  if (probabilities.length <= index) { return null }
-
-  const lis = top_tokens.map((word, idx) => {
-    const prob = formatProbability(probabilities, idx)
-    console.log("word: ", word);
-    // get rid of CRs
-    // const cleanWord = word.join('').replace(' ,', ',').replace(/\n/g, "↵")
-    //     .replace(/Ġ/g, " ").replace(/Ċ/g, "↵")
-    //
-    // const displaySeq = cleanWord.slice(-1) == "." ? cleanWord : cleanWord.concat(' ...')
-    const displaySeq = word
-    return (
-      <ListItem key={`${idx}-${word}`}>
-        <ChoiceItem onClick={() => choose(word)}>
-          <Probability>{prob}</Probability>
-          {' '}
-          <Token>{displaySeq}</Token>
-        </ChoiceItem>
-      </ListItem>
-    )
-  })
-
-  const goBack = () => {
-    window.history.back();
-  }
-
-  const goBackItem = (
-    <ListItem key="go-back">
-      {'history' in window ? (
-        <UndoButton onClick={goBack}>
-          <Probability>←</Probability>
-          {' '}
-          <Token>Undo</Token>
-        </UndoButton>
-      ) : null}
-    </ListItem>
-  )
-
-  return (
-    <ChoiceList>
-      {lis}
-      {goBackItem}
-    </ChoiceList>
-  )
-}
 
 const modelProps = {}
 

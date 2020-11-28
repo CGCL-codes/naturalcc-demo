@@ -133,7 +133,6 @@ const Token = styled.span`
 const DEFAULT = "Test";
 
 
-
 function trimRight(str) {
   return str.replace(/ +$/, '');
 }
@@ -145,7 +144,6 @@ const description = (
     <p>Under construction...</p>
   </span>
 )
-
 
 class App extends React.Component {
   constructor(props) {

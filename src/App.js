@@ -40,14 +40,14 @@ const Demo = (props) => {
     const {model, slug} = props.match.params
     const redirectedModel = modelRedirects[model] || model
     return (
-        <Header>
-            <HeaderColumnsWithSpace columns="auto 1fr">
-                <Header.Logo href="http://xcodemind.github.io/">
-                    <Logo width="147px" height="26px" alt="NaturalCC" />
-                </Header.Logo>
-            </HeaderColumnsWithSpace>
-        </Header>
         <Layout bgcolor="white">
+            <Header>
+                <HeaderColumnsWithSpace columns="auto 1fr">
+                    <Header.Logo href="http://xcodemind.github.io/">
+                        <Logo width="147px" height="26px" alt="NaturalCC" />
+                    </Header.Logo>
+                </HeaderColumnsWithSpace>
+            </Header>
             <Layout>
                 <Menu redirectedModel={redirectedModel}/>
                 <Layout>

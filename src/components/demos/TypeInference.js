@@ -130,20 +130,9 @@ const Token = styled.span`
   font-weight: 600;
 `
 
-const DEFAULT = "AllenNLP is";
+const DEFAULT = "Test";
 
-function addToUrl(output, choice) {
-  if ('history' in window) {
-    window.history.pushState(null, null, '?text=' + encodeURIComponent(output + (choice || '')))
-  }
-}
 
-function loadFromUrl() {
-  const params =
-      document.location.search.substr(1).split('&').map(p => p.split('='));
-  const text = params.find(p => p[0] === 'text');
-  return Array.isArray(text) && text.length === 2 ?  decodeURIComponent(text.pop()) : null;
-}
 
 function trimRight(str) {
   return str.replace(/ +$/, '');
@@ -165,7 +154,7 @@ class App extends React.Component {
     this.currentRequestId = 0;
 
     this.state = {
-      output: loadFromUrl() || DEFAULT,
+      output: DEFAULT,
       top_tokens: null,
       logits: null,
       probabilities: null,

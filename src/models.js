@@ -10,6 +10,9 @@ import CodeSummarization from './components/demos/CodeSummarization'
 import CodeRetrieval from './components/demos/CodeRetrieval'
 import TypeInference from './components/demos/TypeInference'
 import CodePrediction from './components/demos/CodePrediction'
+import CodePrediction from './components/demos/CloneDetection'
+import CodePrediction from './components/demos/VulDetection'
+import CodePrediction from './components/demos/MaskedLM'
 
 // This is the order in which they will appear in the menu
 const modelGroups = [
@@ -52,7 +55,7 @@ const modelGroups = [
         defaultOpen: true,
         models: [
             {model: "type-inference", name: "Type Inference", component: TypeInference},
-            {model: "type-xxx", name: "Code Clone Detection", component: ClodeDetection},
+            {model: "type-xxx", name: "Code Clone Detection", component: CloneDetection},
             // {model: "type-xx", name: "API Recommendation", component: APIRecommendation},
             {model: "type-xx", name: "Vulnerability Detection", component: VulDetection},
             {model: "type-x", name: "Masked Language Modeling", component: MaskedLM},

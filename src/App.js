@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom
 import {ThemeProvider, Footer, Layout} from '@allenai/varnish';
 // import {ThemeProvider, Header, Layout} from 'antd';
 // import Header from 'antd'
-import {Layout as AntLayout} from 'antd';
+// import {Layout as AntLayout} from 'antd';
 import Menu from './components/Menu';
 import ModelIntro from './components/ModelIntro';
 import {ScrollToTopOnPageChange} from './components/ScrollToTopOnPageChange';
@@ -19,7 +19,7 @@ import '@allenai/varnish/dist/varnish.css';
 
 const {Content, DefaultAppLayoutProvider} = Layout;
 // const {HeaderColumns} = Header;
-const {Header} = AntLayout
+// const {Header} = AntLayout
 
 const DEFAULT_PATH = "/code-prediction"
 
@@ -45,9 +45,6 @@ const Demo = (props) => {
     return (
         <Layout bgcolor="white">
             <Layout>
-            <Header>
-            NaturalCC
-            </Header>
                 <Menu redirectedModel={redirectedModel}/>
                 <Layout>
                     <FullSizeContent>

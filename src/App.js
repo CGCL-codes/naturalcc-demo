@@ -41,7 +41,9 @@ const Demo = (props) => {
     const redirectedModel = modelRedirects[model] || model
     return (
         <Layout bgcolor="white">
-            <h1>NaturalCC</h1>
+            <HeaderColumnsWithSpace columns="auto 1fr">
+                NaturalCC
+            </HeaderColumnsWithSpace>
             <Layout>
                 <Menu redirectedModel={redirectedModel}/>
                 <Layout>

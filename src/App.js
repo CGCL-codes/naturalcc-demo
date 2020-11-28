@@ -42,9 +42,6 @@ const Demo = (props) => {
     return (
         <Header>
             <HeaderColumnsWithSpace columns="auto 1fr">
-                // <Header.Logo href="http://xcodemind.github.io/">
-                //     <Logo width="147px" height="26px" alt="NaturalCC" />
-                // </Header.Logo>
                 NaturalCC
             </HeaderColumnsWithSpace>
         </Header>

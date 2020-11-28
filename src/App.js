@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
-import {ThemeProvider, Footer, Header, Layout} from '@allenai/varnish';
+import {ThemeProvider, Footer, Layout} from '@allenai/varnish';
 // import {ThemeProvider, Header, Layout} from 'antd';
+import Header from 'antd'
 import Menu from './components/Menu';
 import ModelIntro from './components/ModelIntro';
 import {ScrollToTopOnPageChange} from './components/ScrollToTopOnPageChange';
@@ -41,9 +42,11 @@ const Demo = (props) => {
     const redirectedModel = modelRedirects[model] || model
     return (
         <Layout bgcolor="white">
-            <HeaderColumnsWithSpace columns="auto 1fr">
-                NaturalCC
-            </HeaderColumnsWithSpace>
+            <Header>
+              <HeaderColumnsWithSpace columns="auto 1fr">
+                  NaturalCC
+              </HeaderColumnsWithSpace>
+            </Header>
             <Layout>
                 <Menu redirectedModel={redirectedModel}/>
                 <Layout>

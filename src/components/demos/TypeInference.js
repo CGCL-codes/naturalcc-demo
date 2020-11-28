@@ -153,8 +153,7 @@ const DEFAULT_MODEL = "345M"
 
 const description = (
   <span>
-    <p>Program language modeling is the task of predicting the probability of next code token given the previous input tokens.</p>
-    <p>The model used in this demonstration is based on Transformer.</p>
+    <p>Under construction...</p>
   </span>
 )
 
@@ -328,37 +327,6 @@ class App extends React.Component {
         <ModelArea className="model__content answer">
           <h2><span>{title}</span></h2>
           <span>{description}</span>
-          <InputOutput>
-            <InputOutputColumn>
-              <FormLabel>Sentence:</FormLabel>
-                <TextInput type="text"
-                          autoSize={{ minRows: 5, maxRows: 10 }}
-                          value={this.state.output}
-                          onChange={this.setOutput}/>
-                {this.state.loading ? (
-                  <Loading>
-                    <img src="/assets/loading-bars.svg" width="25" height="25" alt="loading" />
-                    <LoadingText>Loading</LoadingText>
-                  </Loading>
-                ) : null}
-                {this.state.error ? (
-                  <Error>
-                    <span role="img" aria-label="warning">️⚠</span> Something went wrong. Please try again.
-                  </Error>
-                ) : null}
-            </InputOutputColumn>
-            <InputOutputColumn>
-              <FormLabel>Predictions:</FormLabel>
-              <Choices output={this.state.output}
-                      index={0}
-                      choose={this.choose}
-                      logits={this.state.logits}
-                      top_tokens={this.state.top_tokens}
-                      probabilities={this.state.probabilities}
-                      hidden={this.state.loading}/>
-            </InputOutputColumn>
-          </InputOutput>
-          <span>{probabilitiesNote}</span>
         </ModelArea>
       </Wrapper>
     )

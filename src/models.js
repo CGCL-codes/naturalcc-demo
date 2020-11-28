@@ -38,22 +38,23 @@ const modelGroups = [
             {model: "code-retrieval", name: "Code Retrieval", component: CodeRetrieval},
         ]
     },
-    {
-        label: "Type Inference",
-        iconSrc: parseIcon,
-        defaultOpen: true,
-        models: [
-            {model: "type-inference", name: "Type Inference", component: TypeInference},
-        ]
-    },
+    // {
+    //     label: "Type Inference",
+    //     iconSrc: parseIcon,
+    //     defaultOpen: true,
+    //     models: [
+    //         {model: "type-inference", name: "Type Inference", component: TypeInference},
+    //     ]
+    // },
     {
         label: "Ongoing",
         iconSrc: otherIcon,
         defaultOpen: true,
         models: [
+            {model: "type-inference", name: "Type Inference", component: TypeInference},
             {model: "type-xxx", name: "Code Clone Detection", component: TypeInference},
             {model: "type-xx", name: "API Recommendation", component: TypeInference},
-            {model: "type-x", name: "Masked Language Modeling", component: CodePrediction},
+            {model: "type-x", name: "Masked Language Modeling", component: TypeInference},
         ]
     },
 ]

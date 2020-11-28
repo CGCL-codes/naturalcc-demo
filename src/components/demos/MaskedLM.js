@@ -13,7 +13,7 @@ import { FormField, FormLabel, FormTextArea } from '../Form';
 
 const NAME_OF_INPUT_TO_ATTACK = "tokens"
 const NAME_OF_GRAD_INPUT = "grad_input_1"
-const title = "Type Inference";
+const title = "Masked Language Modeling";
 
 const Wrapper = styled.div`
   color: #232323;

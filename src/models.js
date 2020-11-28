@@ -55,10 +55,10 @@ const modelGroups = [
         defaultOpen: true,
         models: [
             {model: "type-inference", name: "Type Inference", component: TypeInference},
-            {model: "type-xxx", name: "Code Clone Detection", component: CloneDetection},
+            {model: "type-inference", name: "Code Clone Detection", component: CloneDetection},
             // {model: "type-xx", name: "API Recommendation", component: APIRecommendation},
-            {model: "type-xx", name: "Vulnerability Detection", component: VulDetection},
-            {model: "type-x", name: "Masked Language Modeling", component: MaskedLM},
+            {model: "type-inference", name: "Vulnerability Detection", component: VulDetection},
+            {model: "type-inference", name: "Masked Language Modeling", component: MaskedLM},
         ]
     },
 ]

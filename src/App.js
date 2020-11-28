@@ -43,9 +43,7 @@ const Demo = (props) => {
         <Layout bgcolor="white">
             <Header>
                 <HeaderColumnsWithSpace columns="auto 1fr">
-                    <Header.Logo href="http://xcodemind.github.io/">
-                        <Logo width="147px" height="26px" alt="NaturalCC" />
-                    </Header.Logo>
+                    NaturalCC
                 </HeaderColumnsWithSpace>
             </Header>
             <Layout>
@@ -64,9 +62,9 @@ const FullSizeContent = styled(Content)`
     padding: 0;
 `;
 
-// const HeaderColumnsWithSpace = styled(HeaderColumns)`
-//     padding: ${({theme}) => theme.spacing.md} 0;
-// `;
+const HeaderColumnsWithSpace = styled(HeaderColumns)`
+    padding: ${({theme}) => theme.spacing.md} 0;
+`;
 
 class SingleTaskDemo extends React.Component {
     constructor(props) {

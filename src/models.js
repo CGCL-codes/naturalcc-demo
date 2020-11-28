@@ -10,9 +10,9 @@ import CodeSummarization from './components/demos/CodeSummarization'
 import CodeRetrieval from './components/demos/CodeRetrieval'
 import TypeInference from './components/demos/TypeInference'
 import CodePrediction from './components/demos/CodePrediction'
-import CodePrediction from './components/demos/CloneDetection'
-import CodePrediction from './components/demos/VulDetection'
-import CodePrediction from './components/demos/MaskedLM'
+import CloneDetection from './components/demos/CloneDetection'
+import VulDetection from './components/demos/VulDetection'
+import MaskedLM from './components/demos/MaskedLM'
 
 // This is the order in which they will appear in the menu
 const modelGroups = [

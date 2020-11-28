@@ -18,7 +18,7 @@ import '@allenai/varnish/dist/varnish.css';
 const {Content, DefaultAppLayoutProvider} = Layout;
 const {HeaderColumns} = Header;
 
-const DEFAULT_PATH = "/code-retrieval"
+const DEFAULT_PATH = "/code-prediction"
 
 const App = () => (
     <ThemeProvider>

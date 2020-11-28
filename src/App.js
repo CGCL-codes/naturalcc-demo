@@ -43,10 +43,12 @@ const Demo = (props) => {
     const {model, slug} = props.match.params
     const redirectedModel = modelRedirects[model] || model
     return (
+        <AntLayout>
+          <Header>
+          NaturalCC
+          </Header>
+        </AntLayout>
         <Layout bgcolor="white">
-            <Header>
-                NaturalCC
-            </Header>
             <Layout>
                 <Menu redirectedModel={redirectedModel}/>
                 <Layout>

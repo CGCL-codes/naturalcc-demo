@@ -45,11 +45,9 @@ const Demo = (props) => {
     return (
         <Layout bgcolor="white">
             <Layout>
-              <Header>
-              NaturalCC
-              </Header>
-            </Layout>
-            <Layout>
+            <Header>
+            NaturalCC
+            </Header>
                 <Menu redirectedModel={redirectedModel}/>
                 <Layout>
                     <FullSizeContent>

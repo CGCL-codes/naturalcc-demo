@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 import {ThemeProvider, Footer, Layout} from '@allenai/varnish';
 // import {ThemeProvider, Header, Layout} from 'antd';
-import Header from 'antd'
+// import Header from 'antd'
+import {Layout as AntLayout} from 'antd';
 import Menu from './components/Menu';
 import ModelIntro from './components/ModelIntro';
 import {ScrollToTopOnPageChange} from './components/ScrollToTopOnPageChange';
@@ -17,7 +18,8 @@ import '@allenai/varnish/dist/varnish.css';
 // import '~antd/dist/antd.css';
 
 const {Content, DefaultAppLayoutProvider} = Layout;
-const {HeaderColumns} = Header;
+// const {HeaderColumns} = Header;
+const {Header} = AntLayout
 
 const DEFAULT_PATH = "/code-prediction"
 
@@ -43,9 +45,7 @@ const Demo = (props) => {
     return (
         <Layout bgcolor="white">
             <Header>
-              <HeaderColumnsWithSpace columns="auto 1fr">
-                  NaturalCC
-              </HeaderColumnsWithSpace>
+                NaturalCC
             </Header>
             <Layout>
                 <Menu redirectedModel={redirectedModel}/>
@@ -63,9 +63,9 @@ const FullSizeContent = styled(Content)`
     padding: 0;
 `;
 
-const HeaderColumnsWithSpace = styled(HeaderColumns)`
-    padding: ${({theme}) => theme.spacing.md} 0;
-`;
+// const HeaderColumnsWithSpace = styled(HeaderColumns)`
+//     padding: ${({theme}) => theme.spacing.md} 0;
+// `;
 
 class SingleTaskDemo extends React.Component {
     constructor(props) {

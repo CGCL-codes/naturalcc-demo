@@ -14,7 +14,9 @@ const title = "Code Summarization";
 const description = (
     <span>
         <span>
-        enerating comments forcode snippets is an effective way for program understandingand facilitate the software development and maintenance.
+        Generating comments forcode snippets is an effective way for program understandingand facilitate the software development and maintenance.
+            <p>Dataset: <a href="https://github.com/wasiahmad/NeuralCodeSum/blob/master/data/python/get_data.sh">Python(wan)</a></p>
+            <p><i>*Code is running on 2 core cpu. If it is slow, please wait. Thanks!*</i></p>
         </span>
     </span>
 )
@@ -69,16 +71,16 @@ const taskModels = [
         modelId: "code-summarization-transformer",
         // usage: buildUsage("fine-grained-ner.2020-06-24.tar.gz")
     },
-    {
-        name: "Seq2Seq",
-        desc: <span>
-      This model is the baseline model described
-      in <a href="https://arxiv.org/pdf/1409.3215.pdf">Sequence to Sequence Learning with Neural Networks</a>.
-      It uses a RNN based encoder as well as a RNN based encoder for text generation task.
-      </span>,
-        modelId: "code-summarization-seq2seq",
-        // usage: buildUsage("fine-grained-ner.2020-06-24.tar.gz")
-    },
+    // {
+    //     name: "Seq2Seq",
+    //     desc: <span>
+    //   This model is the baseline model described
+    //   in <a href="https://arxiv.org/pdf/1409.3215.pdf">Sequence to Sequence Learning with Neural Networks</a>.
+    //   It uses a RNN based encoder as well as a RNN based encoder for text generation task.
+    //   </span>,
+    //     modelId: "code-summarization-seq2seq",
+    //     // usage: buildUsage("fine-grained-ner.2020-06-24.tar.gz")
+    // },
 
 ]
 

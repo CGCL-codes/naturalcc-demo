@@ -14,6 +14,8 @@ const description = (
     <span>
         <span>
             Searching  semantically  similar  codesnippets given a natural language query can provide developersa series of templates for reference for rapid prototyping.
+            <p>Dataset: <a href="https://github.com/github/codesearchnet#data">CodeSearchNet(ruby)</a></p>
+            <p><i>*Code is running on 2 core cpu. If it is slow, please wait. Thanks!*</i></p>
         </span>
     </span>
 );
@@ -58,13 +60,13 @@ const PanelDesc = styled.div`
 
 const examples = [
     {
-        utterance: "Execute the given command, yielding each line.",
+        utterance: "Create a missing file if the path is valid.",
     },
     {
-        utterance: 'Matches the block or conditions hash.',
+        utterance: 'Assign the value to the given attribute of the item',
     },
     {
-        utterance: 'Parse the service name from a path.',
+        utterance: 'Validate the requested filter query strings. If all filters are valid\\n then return them as {Hash hashes}, otherwise halt 400 Bad Request and\\n return JSON error response.',
     },
 ];
 

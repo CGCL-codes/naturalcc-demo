@@ -116,26 +116,11 @@ def retrieve():
     # # }
 
     # invoke our model API and obtain the output
-    output = {}
-
-    # output["top_tokens"] = [['aaa', 'aaaaaaa'], ['bbb', 'bbbbbbb'], ['ccc', 'cccccc'], ['ddd', 'ddddd']]
-    # output["top_indices"] = [[1, 2], [3,4], [5,6], [7,8]]
-    # output["probabilities"] = [[0.11, 0.111], [0.22, 0.222], [0.33, 0.333], [0.44, 0.444]]
-
-    if ujson.loads(inputs)["utterance"] == "Execute the given command, yielding each line.":
-        output[
-            "predicted_sql_query"] = "def read_shared_libs(command)\n      cmd = shellout(command)\n      cmd.stdout.each_line do |line|\n        yield line\n      end\n    end"
-    elif ujson.loads(inputs)["utterance"] == "Matches the block or conditions hash.":
-        output[
-            "predicted_sql_query"] = "def matches_conditions?(action, subject, extra_args)\n      if @match_all\n        call_block_with_all(action, subject, extra_args)\n      elsif @block && !subject_class?(subject)\n        @block.call(subject, *extra_args)\n      elsif @conditions.kind_of?(Hash) && subject.class == Hash\n        nested_subject_matches_conditions?(subject)\n      elsif @conditions.kind_of?(Hash) && !subject_class?(subject)\n        matches_conditions_hash?(subject)\n      else\n        # Don't stop at \"cannot\" definitions when there are conditions.\n        @conditions.empty? ? true : @base_behavior\n      end\n    end"
-    elif ujson.loads(inputs)["utterance"] == 'Parse the service name from a path.':
-        output[
-            "predicted_sql_query"] = "def parse_service_name(path)\n      parts = Pathname.new(path).each_filename.to_a.reverse!\n      # Find the last segment not in common segments, fall back to the last segment.\n      parts.find {|seg| !COMMON_SEGMENTS[seg] } || parts.first\n    end"
-
-    # rsp = flask.Response(json.dumps(output))
-    # rsp.headers = headers
-    # rsp.headers['Cache-Control'] = 'no-cache'
-    # return rsp
+    model_path = '~/.ncc/demo/retrieval/nbow/csn_ruby.pt'
+    model_input = ujson.loads(inputs)["utterance"]
+    raw_code = cli_main(os.path.expanduser(model_path), input=model_input)
+    raw_code = ujson.loads(raw_code)
+    output = {'predicted_sql_query': raw_code}
 
     return json.dumps(output)
 
